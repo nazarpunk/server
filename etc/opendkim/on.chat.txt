@@ -1,0 +1,3 @@
+on.chat._domainkey	IN	TXT	( "v=DKIM1; h=sha256; k=rsa; "
+	  "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnNBvB+ns6ZPfHAFzKnqLDk3y8UaIRAgSb7FINqNy6lkbBFzXCbRb//DQi5s0OHbp67oXiP/vGuhXX0ushGL39Ui+hHVFXV8/cwc0UghAGq/u2rwV6C/T5lLCngev6w2WcgPtFMIFNiyrWemdJidAwWr8IPVOJRpxO47k+ITHxpDJVx3VjOdNsNEAAXqCaSzB5X8ENVQaVQfV8D"
+	  "xec8URD7vTHhzS0jA99dG/ZT5N4Bby0oNZDCgrTXp6NKuzWfKSNMiOSGmqxhggUWcHoXQn27UidZAsZDiXa79XvjpvmfgO5tPp938CxE0a3pJOQz8Qh6ELgQqhCluQizBaBb3C0wIDAQAB" )  ; ----- DKIM key on.chat for on.chat

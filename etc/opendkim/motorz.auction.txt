@@ -1,0 +1,3 @@
+motorz.auction._domainkey	IN	TXT	( "v=DKIM1; h=sha256; k=rsa; "
+	  "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlxR6gyVzIUjHgA01c0Uw8m/0ugPfzy/lfUPB5PQkKWruttGmpCzIzoEUPDpchgAeRAWguukisM3038UUSkEWblvgKKMO8acs2Y3xwdQndfeDZxC0TccUOq9anpUNXAN+DYyV29gZfgDv6na+X/ZxpyzeKEXhEnIs8EF/bEPYm8HHbDyrXt/CZidIUndBMyMtWaHuGpGLab5EBS"
+	  "9GyxCimL7y4HgK/D9EdXXB6Lq9Y2yKbSKruJVlSCwkpIcGOTEMcTOpQD17VJs/zHPcnXfJZWYp6QmkG12CiBcm1u5clrnncUWLqsIuzrGKTywicisBGYrnKCa7zpUyR4d4l/jBNQIDAQAB" )  ; ----- DKIM key motorz.auction for motorz.auction
