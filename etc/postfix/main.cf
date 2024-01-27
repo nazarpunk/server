@@ -1,7 +1,14 @@
-myorigin = on.chat
-myhostname = on.chat
+# See /usr/share/postfix/main.cf.dist for a commented, more complete version
+
+
+# Debian specific:  Specifying a file name will cause the first
+# line of that file to be used as the name.  The Debian default
+# is /etc/mailname.
+#myorigin = /etc/mailname
+
 smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
 biff = no
+
 # appending .domain is the MUA's job.
 append_dot_mydomain = no
 
@@ -10,105 +17,65 @@ append_dot_mydomain = no
 
 readme_directory = no
 
-maximal_backoff_time = 7200s
-minimal_backoff_time = 1800s
-queue_run_delay = 1800s
-maximal_queue_lifetime = 4d
-bounce_queue_lifetime  = 4d
-message_size_limit = 0
-#header_checks = regexp:/etc/postfix/header-checks
-# TLS parameters
-smtpd_use_tls = yes
-smtp_use_tls = yes
-smtpd_tls_auth_only = yes
-smtp_tls_note_starttls_offer = yes
-smtpd_tls_cert_file=/etc/postfix/ssl/venus.csr
-smtpd_tls_key_file=/etc/postfix/ssl/venus.key
-smtpd_tls_loglevel = 1
-smtpd_tls_received_header = yes
-smtpd_tls_session_cache_timeout = 3600s
-tls_random_source = dev:/dev/urandom
+# See http://www.postfix.org/COMPATIBILITY_README.html -- default to 3.6 on
+# fresh installs.
+compatibility_level = 3.6
 
-mydestination = $myhostname, on.chat, ubuntu, localhost.localdomain, localhost
-#virtual_alias_maps= hash:/etc/postfix/virtual
-relayhost = 
+
+
+# TLS parameters
+smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+smtpd_tls_security_level=may
+
+smtp_tls_CApath=/etc/ssl/certs
+smtp_tls_security_level=may
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+
+
+smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+myhostname = server24.venus.agency
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+myorigin = /etc/mailname
+mydestination = $myhostname, mail.on.chat, server24.venus.agency, localhost.venus.agency, localhost
+relayhost =
 mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 mailbox_size_limit = 0
-recipient_delimiter = 
-invalid_hostname_reject_code = 550
-non_fqdn_reject_code = 550
-unknown_address_reject_code = 550
-unknown_client_reject_code = 550
-unknown_hostname_reject_code = 550
-unverified_recipient_reject_code = 550
-unverified_sender_reject_code = 550
-strict_rfc821_envelopes = yes
-disable_vrfy_command = yes
-smtpd_delay_reject = yes
-smtpd_helo_required = yes
+recipient_delimiter = +
+inet_interfaces = all
+inet_protocols = all
 
-smtpd_client_restrictions =
-# Пускаем из наших сетей
-  permit_mynetworks,
-  permit
 
-smtpd_helo_restrictions =
-  permit_mynetworks,
-  permit_sasl_authenticated,
-  reject_invalid_helo_hostname,
-  reject_non_fqdn_helo_hostname,
-  reject_unknown_helo_hostname,
-  reject_non_fqdn_hostname,
-  permit
+# NEW CONFIG
 
-smtpd_sender_restrictions =
-  permit_mynetworks,
-# Только локальным пользователям
-  reject_unauth_destination,
-# Проверки на правильность адреса отправителя и существование домена
-  permit_sasl_authenticated,
-  reject_non_fqdn_sender,
-  reject_unknown_sender_domain,
-# Отказываем в отправке своим пользователям, у которых логин не совпадает с адресом отправителя и
-# удаленным отправителям,которые пытаются представиться локальными
-  reject_sender_login_mismatch,
-  permit_sasl_authenticated
-  permit
+# Change postfix TLS parameter to use dovecot
+#smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+#smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+smtpd_tls_cert_file=/etc/ssl/certs/dovecot.pem
+smtpd_tls_key_file=/etc/ssl/private/dovecot.pem
+smtpd_use_tls=yes
+#smtpd_tls_auth_only = yes
+
+#Handle SMTP authentication using Dovecot
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
 
 smtpd_recipient_restrictions =
-  permit_mynetworks,
-  permit_sasl_authenticated,
-# Отбрасываем тех, кто посылает SMTP команды вне очередности
-  reject_unauth_pipelining,
-# Проверяем на правильност адрес отправителя
-  reject_non_fqdn_recipient,
-  reject_unknown_recipient_domain,
-# Вот это одна из главных строчек :) Не дает нашему серверу стать открытым релеем почты
-  reject_unauth_destination,
-# Проверяем существует ли у нас получатель (если письмо доставляется многим получателям,
-# и хотя-бы один не существует, то письмо не будет принято)
-  reject_unlisted_recipient,
-  permit
+    permit_sasl_authenticated,
+    permit_mynetworks,
+    reject_unauth_destination
 
-smtpd_data_restrictions =
-  permit_mynetworks,
-  permit_sasl_authenticated,
-  reject_unauth_pipelining,
-  permit
+# other destination domains should be handled using virtual domains
+mydestination = localhost
 
-smtpd_end_of_data_restrictions =
-  permit_mynetworks,
-  permit_sasl_authenticated,
-#  reject_multi_recipient_bounce,
-  permit
+# using Dovecot's LMTP for mail delivery and giving it path to store mail
+virtual_transport = lmtp:unix:private/dovecot-lmtp
 
-unknown_local_recipient_reject_code = 550
-#smtpd_null_access_lookup_key = <>
-address_verify_sender = $double_bounce_sender
-smtpd_sasl_auth_enable = yes
-smtpd_sasl_path = private/auth
-milter_default_action = accept
-milter_protocol = 2
-smtpd_milters = inet:10021
-non_smtpd_milters = inet:10021
-compatibility_level = 2
+# virtual mailbox setups
+virtual_uid_maps = static:5000
+virtual_gid_maps = static:5000
+virtual_alias_maps = mysql:/etc/postfix/mysql/virtual_alias_maps.cf
+virtual_mailbox_domains = mysql:/etc/postfix/mysql/virtual_domains_maps.cf
+virtual_mailbox_maps = mysql:/etc/postfix/mysql/virtual_mailbox_maps.cf
