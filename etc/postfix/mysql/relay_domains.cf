@@ -2,4 +2,4 @@ hosts = 127.0.0.1:3306
 user = root
 password = kj9023bng6752bjw
 dbname = postfix
-query = SELECT goto FROM alias WHERE address='%s' AND active = '1'
+query = SELECT domain FROM domain WHERE domain='%s' and backupmx = '1'

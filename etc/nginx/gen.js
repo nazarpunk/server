@@ -18,48 +18,32 @@ http {
     error_log /var/log/nginx/error.log;
 
     sendfile on;
-    
-    # === phpmyadmin
-    server {
-        listen 80;
-        server_name php.on.chat;
-        return 301 https://$server_name$request_uri;
-    }
-    server {
-        server_name php.on.chat;
-        root /usr/share/phpmyadmin;
-        include import/server.conf;
-    }
-    
-    # === roundcube
-    
-    server {
-        listen 80;
-        server_name roundcube.on.chat;
-        return 301 https://$server_name$request_uri;
-    }
-    server {
-        server_name roundcube.on.chat;
-        root /var/www/html/roundcube;
-        include import/server.conf;
-    }
-    
-    # === postfixadmin
-    server {
-        listen 80;
-        server_name postfixadmin.on.chat;
-        return 301 https://$server_name$request_uri;
-    }
-    server {
-        server_name postfixadmin.on.chat;
-        root /var/www/html/postfixadmin/public;
-        include import/server.conf;
-    }
-    
- 
+
     #SERVERS
 }
 `
+/**
+ *
+ * @param {string} subdomain
+ * @param {string} root
+ * @returns {*}
+ */
+// language=Nginx Configuration
+const subserver =
+    (subdomain, root) => `
+    # === ${subdomain}
+    server {
+        listen 80;
+        server_name ${subdomain};
+        return 301 https://$server_name$request_uri;
+    }
+    server {
+        server_name ${subdomain};
+        root ${root};
+        include import/server.conf;
+    }
+`
+
 
 /**
  *
@@ -108,10 +92,14 @@ const redirect = (domain, target) => `
 // ===
 let s = '';
 
-
-/*
-drive.studio
-*/
+for (const [domain, root] of [
+    ['php.on.chat', '/usr/share/phpmyadmin'],
+    ['roundcube.on.chat', '/var/www/html/roundcube'],
+    ['postfixadmin.on.chat', '/var/www/html/postfixadmin/public'],
+    ['mail.on.chat', '/var/www/html/mail'],
+]) {
+    s += subserver(domain, root)
+}
 
 for (const [domain, root] of [
     ['on.chat', 'chat'],
@@ -119,6 +107,7 @@ for (const [domain, root] of [
     ['digitalinnovationgroup.llc', 'digital'],
     ['motorz.auction', 'motorz'],
     ['eastriderz.com', 'eastriderz'],
+    ['drive.studio', 'drive']
 ]) {
     s += server(domain, root)
 }
