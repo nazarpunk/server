@@ -1,5 +1,0 @@
-on.chat._domainkey.on.chat on.chat:on.chat:/etc/opendkim/on.chat.private
-venus.agency._domainkey.venus.agency venus.agency:venus.agency:/etc/opendkim/venus.agency.private
-motorz.auction._domainkey.motorz.auction motorz.auction:motorz.auction:/etc/opendkim/motorz.auction.private
-eastriderz.com._domainkey.eastriderz.com eastriderz.com:eastriderz.com:/etc/opendkim/eastriderz.com.private
-digital-innovation.group._domainkey.digital-innovation.group digital-innovation.group:digital-innovation.group:/etc/opendkim/digital-innovation.group.private

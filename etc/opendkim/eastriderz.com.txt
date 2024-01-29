@@ -1,3 +1,0 @@
-eastriderz.com._domainkey	IN	TXT	( "v=DKIM1; h=sha256; k=rsa; "
-	  "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtnaxrgDGvWrSXGQpgD9psQEH6EAaxw/PO8ia/lUtusWn18UxFrl2B5mNrM64Pb6U55KUvdPJ4iN3W2+a1mIPGS20aWuhWYIjWEwclz1eBreogWJQxjFePbfTUvwIyvmZEzHdfV+UecKNrrh2cJ5aLff/wKj4rekMas2L7uMRfSp8UC56iY18vS4yqKNZq/d1yaNGMeXKPyRobM"
-	  "4tdAhdZSzQi6qKhKz35+Cmo+21Akgw3LanMaM6Rlmps59CVOt8+SUL9RQuNpNy4iV9jDy6ozPlbrqQB46dygGA/u9mB7I8YS+Jqf01u7muYR0LuJDAMeE6Lif8unDOTLf5mzgljwIDAQAB" )  ; ----- DKIM key eastriderz.com for eastriderz.com

@@ -93,15 +93,6 @@ const redirect = (domain, target) => `
 let s = '';
 
 for (const [domain, root] of [
-    ['php.on.chat', '/usr/share/phpmyadmin'],
-    ['roundcube.on.chat', '/var/www/html/roundcube'],
-    ['postfixadmin.on.chat', '/var/www/html/postfixadmin/public'],
-    ['mail.on.chat', '/var/www/html/mail'],
-]) {
-    s += subserver(domain, root)
-}
-
-for (const [domain, root] of [
     ['on.chat', 'chat'],
     ['venus.agency', 'venus'],
     ['digitalinnovationgroup.llc', 'digital'],
@@ -118,6 +109,15 @@ for (const [domain, target] of [
     ['eastriderz.store', 'eastriderz.com'],
 ]) {
     s += redirect(domain, target)
+}
+
+for (const [domain, root] of [
+    ['php.on.chat', '/usr/share/phpmyadmin'],
+    ['roundcube.on.chat', '/var/www/html/roundcube'],
+    ['postfixadmin.on.chat', '/var/www/html/postfixadmin/public'],
+    ['mail.on.chat', '/var/www/html/mail'],
+]) {
+    s += subserver(domain, root)
 }
 
 fs.writeFileSync('nginx.conf', base.replace('#SERVERS', s), {flag: 'w+'});

@@ -113,13 +113,19 @@ smtpd_sasl_path = private/dovecot-auth
 
 # Директория для хранения почты
 virtual_mailbox_base = /mnt/mail
-virtual_minimum_uid = 1100
-virtual_uid_maps = static:1100
-virtual_gid_maps = static:1100
+virtual_minimum_uid = 5000
+virtual_uid_maps = static:5000
+virtual_gid_maps = static:5000
 virtual_transport = dovecot
 dovecot_destination_recipient_limit = 1
 
 #sender_bcc_maps = hash:/etc/postfix/sender_bcc_maps
 #recipient_bcc_maps = hash:/etc/postfix/recipient_bcc_maps
 
-compatibility_level=2
+compatibility_level=3.6
+
+# DKIM
+smtpd_milters = inet:127.0.0.1:8891
+non_smtpd_milters = $smtpd_milters
+milter_default_action = accept
+milter_protocol = 2

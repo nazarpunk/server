@@ -1,3 +1,0 @@
-digital-innovation.group._domainkey	IN	TXT	( "v=DKIM1; h=sha256; k=rsa; "
-	  "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsnmtUDJ8tSz0w2+5kjb66kgtCre95WSuV0pY2KQuyHuOwtYuDoKq9UL12JiHDHxe+RaL4xK2Z5dGdNrChwZCjwDZNf2W0vrCFpi82FIc4n+DjFo/T7uZOTSrB0dFVpIZhm23QkYxiW8N90fRe9xV6XblsCEHYauWAYtkZJcn02QWBn2xRfn6ti55H8EtvOn5fJhuuvQSnOLghD"
-	  "bBcR1L0dol13neQ+GXvXf4O+EkHrA3fJHjDU29PnEG5S2jM1Ug5qUPeF/eICNRC29rEAe5FT7qGlVVODVNj4PJYD1zxxKjRL+XLz2wk/CAH21GH6LH5koAQoIUCnI0LiZSDgG6vQIDAQAB" )  ; ----- DKIM key digital-innovation.group for digital-innovation.group

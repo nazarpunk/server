@@ -1,3 +1,0 @@
-venus.agency._domainkey	IN	TXT	( "v=DKIM1; h=sha256; k=rsa; "
-	  "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA16OaU/FT3Sm8ld1Qkwarlw/X9EJL4ttaewv32fyM8feQbp7Xy+kVbcIU4Ek231C+Mio0O9GbjNL05jPT1XP5u5LJzXlSdUdHWdG7blI4c2te8e/FUSwleD3ipxiYlxNr5KsmygCooiYh5sGr2Q9hQg2tjJY2p+R48EiZC0SW+JFkngkTOEM+wphbSOUBeXqWxIw7LokXHaXc/9"
-	  "cK8kQ6ZLWfKV7DVEof7bOMwN4/tlni3RpfFRIvJX2lykidw611MiFdEwctMbP06k1y4qCVsnz4Rn7QbMb8GzZK9/UDQSfmowDvIrcUL27MQaEw11a6HBMnBk7qyLP2mN6taGv+BQIDAQAB" )  ; ----- DKIM key venus.agency for venus.agency
