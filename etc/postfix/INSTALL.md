@@ -5,3 +5,5 @@ https://serveradmin.ru/nastrojka-postfix-dovecot-postfixadmin-roundcube-dkim-na-
 ```shell
 apt-get install postfix postfix-mysql dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql mysql-server dovecot-sieve dovecot-managesieved
 ```
+
+https://serverfault.com/questions/211631/sasl-login-authentication-failed-ugfzc3dvcmq6-find-the-username
