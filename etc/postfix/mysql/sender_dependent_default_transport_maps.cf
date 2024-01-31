@@ -1,0 +1,5 @@
+hosts = 127.0.0.1:3306
+user = root
+password = kj9023bng6752bjw
+dbname = postfix
+query = select transport from transport where domain = '%d' and status order by rand() limit 1

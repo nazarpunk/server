@@ -129,7 +129,6 @@ for (const [domain, root] of [
     ['php.on.chat', '/usr/share/phpmyadmin'],
     ['roundcube.on.chat', '/var/www/html/roundcube'],
     ['postfixadmin.on.chat', '/var/www/html/postfixadmin/public'],
-    ['mail.on.chat', '/var/www/html/mail'],
 ]) {
     s += subserver(domain, root)
 }

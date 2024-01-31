@@ -1,0 +1,24 @@
+[DEFAULT]
+bantime  = 30d
+maxretry = 3
+
+[postfix]
+enabled = true
+port 	= smtp,ssmtp,submission
+action = iptables[name=Postfix-smtp, port=smtp, protocol=tcp]
+filter = postfix
+logpath = /var/log/mail.log
+ignoreip = 127.0.0.1
+
+[postfix-sasl]
+enabled = true
+action = iptables-multiport[name=postfix-sasl, port="smtp,smtps,submission", protocol=tcp]
+filter   = postfix-sasl
+logpath = /var/log/mail.log
+
+[dovecot]
+enabled = true
+port = smtp,ssmtp,submission,imap2,imap3,imaps,pop3,pop3s
+filter = dovecot
+action = iptables-multiport[name=dovecot-pop3imap,port="pop3,pop3s,imap,imaps", protocol=tcp]
+logpath = /var/log/mail.log

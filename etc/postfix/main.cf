@@ -7,7 +7,7 @@ daemon_directory = /usr/lib/postfix/sbin
 data_directory = /var/lib/postfix
 mail_owner = postfix
 
-myhostname = mail.on.chat
+myhostname = on.chat
 mydomain = on.chat
 myorigin = $myhostname
 
@@ -37,6 +37,8 @@ virtual_alias_maps = mysql:/etc/postfix/mysql/virtual_alias_maps.cf,
                      mysql:/etc/postfix/mysql/virtual_alias_domain_maps.cf
 virtual_mailbox_domains = mysql:/etc/postfix/mysql/virtual_mailbox_domains.cf
 virtual_mailbox_maps = mysql:/etc/postfix/mysql/virtual_mailbox_maps.cf
+
+sender_dependent_default_transport_maps = mysql:/etc/postfix/mysql/sender_dependent_default_transport_maps.cf
 
 smtpd_discard_ehlo_keywords = etrn, silent-discard
 smtpd_forbidden_commands = CONNECT GET POST

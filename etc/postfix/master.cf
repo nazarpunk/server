@@ -88,6 +88,14 @@ lmtp      unix  -       -       y       -       -       lmtp
 anvil     unix  -       -       y       -       1       anvil
 scache    unix  -       -       y       -       1       scache
 postlog   unix-dgram n  -       n       -       1       postlogd
+
+# ==== transoprt
+
+transport1 unix -       -       n       -       -       smtp
+  -o syslog_name=on.chat
+  -o smtp_helo_name=on.chat
+  -o smtp_bind_address=185.156.41.84
+
 #
 # ====================================================================
 # Interfaces to non-Postfix software. Be sure to examine the manual
