@@ -95,37 +95,37 @@ $config['syslog_facility'] = LOG_USER;
 
 // Activate this option if logs should be written to per-user directories.
 // Data will only be logged if a directory <log_dir>/<username>/ exists and is writable.
-$config['per_user_logging'] = false;
+$config['per_user_logging'] = true;
 
 // Log sent messages to <log_dir>/sendmail.log or to syslog
 $config['smtp_log'] = true;
 
 // Log successful/failed logins to <log_dir>/userlogins.log or to syslog
-$config['log_logins'] = false;
+$config['log_logins'] = true;
 
 // Log session debug information/authentication errors to <log_dir>/session.log or to syslog
-$config['session_debug'] = false;
+$config['session_debug'] = true;
 
 // Log SQL queries to <log_dir>/sql.log or to syslog
-$config['sql_debug'] = false;
+$config['sql_debug'] = true;
 
 // Log IMAP conversation to <log_dir>/imap.log or to syslog
-$config['imap_debug'] = false;
+$config['imap_debug'] = true;
 
 // Log LDAP conversation to <log_dir>/ldap.log or to syslog
-$config['ldap_debug'] = false;
+$config['ldap_debug'] = true;
 
 // Log SMTP conversation to <log_dir>/smtp.log or to syslog
-$config['smtp_debug'] = false;
+$config['smtp_debug'] = true;
 
 // Log Memcache conversation to <log_dir>/memcache.log or to syslog
-$config['memcache_debug'] = false;
+$config['memcache_debug'] = true;
 
 // Log APC conversation to <log_dir>/apc.log or to syslog
-$config['apc_debug'] = false;
+$config['apc_debug'] = true;
 
 // Log Redis conversation to <log_dir>/redis.log or to syslog
-$config['redis_debug'] = false;
+$config['redis_debug'] = true;
 
 
 // ----------------------------------
@@ -270,7 +270,8 @@ $config['messages_cache_threshold'] = 50;
 // For example %n = mail.domain.tld, %t = domain.tld
 // To specify different SMTP servers for different IMAP hosts provide an array
 // of IMAP host (no prefix or port) and SMTP server e.g. ['imap.example.com' => 'smtp.example.net']
-$config['smtp_server'] = 'localhost';
+//$config['smtp_server'] = 'localhost';
+$config['smtp_server'] = 'tls://localhost';
 
 // SMTP port. Use 25 for cleartext, 465 for Implicit TLS, or 587 for STARTTLS (default)
 $config['smtp_port'] = 587;

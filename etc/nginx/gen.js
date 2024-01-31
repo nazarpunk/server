@@ -49,12 +49,25 @@ const subserver =
  *
  * @param {string} domain
  * @param {string} root
+ * @param {string} ip
  * @returns {*}
  */
-// language=Nginx Configuration
-const server =
-    (domain, root) => `
+const server = (domain, root, ip) => {
+    // language=Nginx Configuration
+    const ipr = ip ? `
+    server {
+        listen 80;
+        server_name ${ip};
+        return 301 https://${domain}$request_uri;
+    }
+` : ''
+
+    // language=Nginx Configuration
+    return `
     # === ${domain}
+    
+    ${ipr}
+    
     server {
         listen 80;
         server_name ${domain} www.${domain};
@@ -66,7 +79,8 @@ const server =
         root /var/www/html/${root};
         include import/server.conf;
     }
-`
+    `;
+}
 
 /**
  * @param {string} domain
@@ -92,15 +106,15 @@ const redirect = (domain, target) => `
 // ===
 let s = '';
 
-for (const [domain, root] of [
-    ['on.chat', 'chat'],
+for (const [domain, root, ip] of [
+    ['on.chat', 'chat', '185.156.41.84'],
     ['venus.agency', 'venus'],
     ['digitalinnovationgroup.llc', 'digital'],
     ['motorz.auction', 'motorz'],
     ['eastriderz.com', 'eastriderz'],
     ['drive.studio', 'drive']
 ]) {
-    s += server(domain, root)
+    s += server(domain, root, ip)
 }
 
 for (const [domain, target] of [
