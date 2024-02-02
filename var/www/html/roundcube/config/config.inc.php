@@ -324,7 +324,13 @@ $config['smtp_timeout'] = 0;
 //   ],
 // ];
 // Note: These can be also specified as an array of options indexed by hostname
-$config['smtp_conn_options'] = null;
+//$config['smtp_conn_options'] = null;
+$config['smtp_conn_options'] = [
+    'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+    ],
+];
 
 
 // ----------------------------------

@@ -1,6 +1,6 @@
 [DEFAULT]
-bantime  = 30d
-maxretry = 3
+bantime  = 600d
+maxretry = 1
 
 [postfix]
 enabled = true

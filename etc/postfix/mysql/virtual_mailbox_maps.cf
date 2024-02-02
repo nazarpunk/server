@@ -2,4 +2,4 @@ hosts = 127.0.0.1:3306
 user = root
 password = kj9023bng6752bjw
 dbname = postfix
-query = SELECT maildir FROM mailbox WHERE username='%s' AND active = '1'
+query = select maildir from mailbox where username='%s' and active = '1'

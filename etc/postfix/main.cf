@@ -83,6 +83,9 @@ smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
 smtpd_tls_key_file = /etc/letsencrypt/live/on.chat/privkey.pem
 smtpd_tls_cert_file = /etc/letsencrypt/live/on.chat/fullchain.pem
 
+#smtpd_sasl_authenticated_header=yes
+#smtp_header_checks = pcre:/etc/postfix/map/smtp_header_checks
+
 tls_random_source = dev:/dev/urandom
 smtpd_tls_mandatory_ciphers = low
 smtpd_tls_ciphers = low
@@ -125,6 +128,7 @@ dovecot_destination_recipient_limit = 1
 #sender_bcc_maps = hash:/etc/postfix/sender_bcc_maps
 #recipient_bcc_maps = hash:/etc/postfix/recipient_bcc_maps
 
+sender_canonical_classes = envelope_sender
 
 # DKIM
 smtpd_milters = inet:127.0.0.1:8891

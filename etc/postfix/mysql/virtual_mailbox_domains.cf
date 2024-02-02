@@ -2,4 +2,4 @@ hosts = 127.0.0.1:3306
 user = root
 password = kj9023bng6752bjw
 dbname = postfix
-query = SELECT domain FROM domain WHERE domain='%s' AND backupmx = '0' AND active = '1'
+query = select domain from domain where domain = '%s' and backupmx = '0' and active = '1'
