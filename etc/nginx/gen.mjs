@@ -112,7 +112,8 @@ for (const [domain, root, ip] of [
     ['digitalinnovationgroup.llc', 'digital'],
     ['motorz.auction', 'motorz'],
     ['eastriderz.com', 'eastriderz'],
-    ['drive.studio', 'drive']
+    ['drive.studio', 'drive'],
+    ['technocore.systems', 'technocore/main'],
 ]) {
     s += server(domain, root, ip)
 }
