@@ -108,8 +108,8 @@ let s = '';
 
 for (const [domain, root, ip] of [
     ['on.chat', 'chat', '185.156.41.84'],
-    ['venus.agency', 'venus'],
-    ['digitalinnovationgroup.llc', 'digital'],
+    ['venus.agency', 'venus', '185.156.43.82'],
+    ['digitalinnovationgroup.llc', 'digital','185.156.43.108'],
     ['motorz.auction', 'motorz'],
     ['eastriderz.com', 'eastriderz'],
     ['drive.studio', 'drive'],
@@ -127,9 +127,9 @@ for (const [domain, target] of [
 }
 
 for (const [domain, root] of [
-    ['php.on.chat', '/usr/share/phpmyadmin'],
-    ['roundcube.on.chat', '/var/www/html/roundcube'],
-    ['postfixadmin.on.chat', '/var/www/html/postfixadmin/public'],
+    ['phpmyadmin.technocore.systems', '/usr/share/phpmyadmin'],
+    ['roundcube.technocore.systems', '/var/www/html/technocore/roundcube'],
+    ['postfixadmin.technocore.systems', '/var/www/html/technocore/postfixadmin/public'],
 ]) {
     s += subserver(domain, root)
 }

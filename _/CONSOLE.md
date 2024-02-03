@@ -3,11 +3,15 @@ nginx -s reload
 ```
 
 ```shell
+certbot delete
+
 certbot certonly --nginx
 ```
 
 ```shell
 sudo chown -R www-data: /var/www/postfixadmin
+
+sudo chown -R opendkim:root /etc/postfix/dkim
 ```
 
 ```shell

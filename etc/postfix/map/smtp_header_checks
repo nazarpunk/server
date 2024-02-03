@@ -1,1 +1,1 @@
-/^Received:(.*)/       REPLACE     Received: *** $1 ***
+/^Received: .*/     IGNORE

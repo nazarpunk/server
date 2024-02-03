@@ -91,10 +91,24 @@ postlog   unix-dgram n  -       n       -       1       postlogd
 
 # ==== transoprt
 
+# on.chat
 transport1 unix -       -       n       -       -       smtp
   -o syslog_name=on.chat
   -o smtp_helo_name=on.chat
   -o smtp_bind_address=185.156.41.84
+
+# venus.agency
+transport2 unix -       -       n       -       -       smtp
+  -o syslog_name=venus.agency
+  -o smtp_helo_name=venus.agency
+  -o smtp_bind_address=185.156.43.82
+
+# digitalinnovationgroup.llc
+transport3 unix -       -       n       -       -       smtp
+  -o syslog_name=digitalinnovationgroup.llc
+  -o smtp_helo_name=digitalinnovationgroup.llc
+  -o smtp_bind_address=185.156.43.108
+
 
 #
 # ====================================================================

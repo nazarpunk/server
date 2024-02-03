@@ -80,11 +80,11 @@ smtp_tls_session_cache_database = btree:$data_directory/smtp_tls_session_cache
 smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
 #smtpd_tls_key_file = /etc/postfix/certs/key.pem
 #smtpd_tls_cert_file = /etc/postfix/certs/cert.pem
-smtpd_tls_key_file = /etc/letsencrypt/live/on.chat/privkey.pem
-smtpd_tls_cert_file = /etc/letsencrypt/live/on.chat/fullchain.pem
+smtpd_tls_key_file = /etc/letsencrypt/live/digitalinnovationgroup.llc/privkey.pem
+smtpd_tls_cert_file = /etc/letsencrypt/live/digitalinnovationgroup.llc/fullchain.pem
 
-#smtpd_sasl_authenticated_header=yes
-#smtp_header_checks = pcre:/etc/postfix/map/smtp_header_checks
+smtpd_sasl_authenticated_header=yes
+smtp_header_checks = pcre:/etc/postfix/map/smtp_header_checks
 
 tls_random_source = dev:/dev/urandom
 smtpd_tls_mandatory_ciphers = low
